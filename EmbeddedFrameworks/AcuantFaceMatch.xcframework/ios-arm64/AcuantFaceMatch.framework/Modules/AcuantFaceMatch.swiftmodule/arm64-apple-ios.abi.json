@@ -512,80 +512,6 @@
             ]
           },
           {
-            "kind": "Function",
-            "name": "initWithJSONDict",
-            "printedName": "initWithJSONDict(jsonDict:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "FacialMatchResult",
-                "printedName": "AcuantFaceMatch.FacialMatchResult",
-                "usr": "c:@M@AcuantFaceMatch@objc(cs)FacialMatchResult"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "[Swift.String : Any]?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Dictionary",
-                    "printedName": "[Swift.String : Any]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "usr": "s:SD"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@AcuantFaceMatch@objc(cs)FacialMatchResult(cm)initWithJSONDictWithJsonDict:",
-            "mangledName": "$s15AcuantFaceMatch06FacialC6ResultC16initWithJSONDict8jsonDictACSDySSypGSg_tFZ",
-            "moduleName": "AcuantFaceMatch",
-            "static": true,
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "ObjC"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "createInstance",
-            "printedName": "createInstance()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "FacialMatchResult",
-                "printedName": "AcuantFaceMatch.FacialMatchResult",
-                "usr": "c:@M@AcuantFaceMatch@objc(cs)FacialMatchResult"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@AcuantFaceMatch@objc(cs)FacialMatchResult(cm)createInstance",
-            "mangledName": "$s15AcuantFaceMatch06FacialC6ResultC14createInstanceACyFZ",
-            "moduleName": "AcuantFaceMatch",
-            "static": true,
-            "declAttributes": [
-              "AccessControl",
-              "ObjC"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -610,6 +536,35 @@
               "Override"
             ],
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FacialMatchResult",
+                "printedName": "AcuantFaceMatch.FacialMatchResult",
+                "usr": "c:@M@AcuantFaceMatch@objc(cs)FacialMatchResult"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:15AcuantFaceMatch06FacialC6ResultC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s15AcuantFaceMatch06FacialC6ResultC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "AcuantFaceMatch",
+            "implicit": true,
+            "declAttributes": [
+              "Required"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
           }
         ],
         "declKind": "Class",
@@ -627,6 +582,13 @@
           "ObjectiveC.NSObject"
         ],
         "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
           {
             "kind": "Conformance",
             "name": "Equatable",
@@ -726,7 +688,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "FacialMatchDelegate",
-                "printedName": "AcuantFaceMatch.FacialMatchDelegate",
+                "printedName": "any AcuantFaceMatch.FacialMatchDelegate",
                 "usr": "c:@M@AcuantFaceMatch@objc(pl)FacialMatchDelegate"
               }
             ],
@@ -1206,21 +1168,63 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/federiconicoli\/Workspace\/iosmobilesdk\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 259,
+      "offset": 269,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/federiconicoli\/Workspace\/iosmobilesdk\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
       "kind": "IntegerLiteral",
-      "offset": 339,
+      "offset": 341,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/federiconicoli\/Workspace\/iosmobilesdk\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchData.swift",
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "kind": "StringLiteral",
+      "offset": 453,
+      "length": 9,
+      "value": "\"IsMatch\""
+    },
+    {
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "kind": "StringLiteral",
+      "offset": 492,
+      "length": 15,
+      "value": "\"TransactionId\""
+    },
+    {
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "kind": "StringLiteral",
+      "offset": 529,
+      "length": 7,
+      "value": "\"Score\""
+    },
+    {
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "kind": "StringLiteral",
+      "offset": 453,
+      "length": 9,
+      "value": "\"IsMatch\""
+    },
+    {
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "kind": "StringLiteral",
+      "offset": 492,
+      "length": 15,
+      "value": "\"TransactionId\""
+    },
+    {
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchResult.swift",
+      "kind": "StringLiteral",
+      "offset": 529,
+      "length": 7,
+      "value": "\"Score\""
+    },
+    {
+      "filePath": "\/Users\/wbarrios\/dev\/mobile-sdk-v11-ios\/AcuantFaceMatch\/AcuantFaceMatch\/FacialMatchData.swift",
       "kind": "StringLiteral",
       "offset": 188,
       "length": 15,

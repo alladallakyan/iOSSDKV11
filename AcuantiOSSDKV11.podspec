@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     s.swift_versions = ['5.5.2']
     s.ios.deployment_target = '11.0'
     s.name         = "AcuantiOSSDKV11"
-    s.version      = "11.5.7"
+    s.version      = "11.6.5"
     s.summary      = "Acuant's latest SDK with most advanced image capture technology and optimized user workflow  "
     s.description  = "Acuant's latest SDK with most advanced image capture technology and optimized user workflow.
 
@@ -15,16 +15,11 @@ Pod::Spec.new do |s|
     s.license      = {
           :type => 'commercial',
           :text => <<-LICENSE
-                  Copyright 2021 Acuant, Inc. All Rights Reserved.
+                  Copyright 2024 Acuant, Inc. All Rights Reserved.
                   LICENSE
     }
     s.author             = { "Acuant Inc" => "smaltsev@acuant.com" }
     s.source       = { :git => "https://github.com/Acuant/iOSSDKV11.git", :tag =>    "#{s.version}" }
-    
-    s.pod_target_xcconfig = {
-        'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-    }
-    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
     s.subspec 'AcuantCommon' do |acuantCommon|
         acuantCommon.ios.deployment_target = '11.0'
@@ -71,22 +66,13 @@ Pod::Spec.new do |s|
         acuantHG.dependency "#{s.name}/AcuantCommon"
     end
     
-    s.subspec 'AcuantIPLiveness' do |acuantIP|
-        acuantIP.ios.deployment_target = '11.0'
-
-        acuantIP.ios.vendored_frameworks = "EmbeddedFrameworks/AcuantIPLiveness.xcframework"
-        
-        acuantIP.dependency "#{s.name}/AcuantCommon"
-        acuantIP.dependency 'iProov', '~> 9.2.0'
-    end
-    
     s.subspec 'AcuantEchipReader' do |acuantEchip|
         acuantEchip.ios.deployment_target = '11.0'
 
         acuantEchip.ios.vendored_frameworks = "EmbeddedFrameworks/AcuantEchipReader.xcframework"
         
         acuantEchip.dependency "#{s.name}/AcuantCommon"
-        acuantEchip.dependency 'OpenSSL-Universal', '1.1.1400'
+        acuantEchip.dependency 'OpenSSL-Universal', '1.1.2301'
     end
     
     s.subspec 'AcuantFaceCapture' do |acuantFaceCapture|
@@ -97,7 +83,7 @@ Pod::Spec.new do |s|
             "AcuantFaceCapture/AcuantFaceCapture/View/*.{h,swift}",
             "AcuantFaceCapture/AcuantFaceCapture/Models/*.{h,swift}",
             "AcuantFaceCapture/AcuantFaceCapture/Extension/*.{h,swift}"
-
+        acuantFaceCapture.resource_bundles = { 'AcuantFaceCaptureAssets' => [ 'AcuantFaceCapture/AcuantFaceCapture/*.xcprivacy'] }
         acuantFaceCapture.dependency "#{s.name}/AcuantCommon"
         acuantFaceCapture.dependency "#{s.name}/AcuantImagePreparation"
     end
@@ -116,9 +102,11 @@ Pod::Spec.new do |s|
              mrz.source_files =
                "AcuantCamera/AcuantCamera/Camera/Mrz/*.{h,swift}",
                "AcuantCamera/AcuantCamera/Camera/Mrz/OCR/*.{h,swift}",
+               "AcuantCamera/AcuantCamera/Camera/Mrz/OCR/Tesseract/*.{h,swift}",
                "AcuantCamera/AcuantCamera/Camera/Mrz/OCR/Utils/*.{h,swift}"
              mrz.dependency "#{s.name}/AcuantCamera/Common"
-             mrz.ios.vendored_frameworks = "EmbeddedFrameworks/TesseractOCR.framework"
+             mrz.ios.vendored_frameworks = "EmbeddedFrameworks/libtesseract.xcframework"
+             mrz.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lc++ -lz' }
          end
 
         acuantCamera.subspec 'Barcode' do |barcode|
@@ -132,7 +120,7 @@ Pod::Spec.new do |s|
                 "AcuantCamera/AcuantCamera/Extension/*.{h,swift}",
                 "AcuantCamera/AcuantCamera/Constant/*.{h,swift}",
                 "AcuantCamera/AcuantCamera/Camera/*.{h,swift}"
-            common.resource_bundles = { 'AcuantCameraAssets' => [ 'AcuantCamera/AcuantCamera/*.xcassets'] }
+            common.resource_bundles = { 'AcuantCameraAssets' => [ 'AcuantCamera/AcuantCamera/*.xcassets', 'AcuantCamera/AcuantCamera/*.xcprivacy'] }
         end
 
         acuantCamera.source_files = "AcuantCamera/AcuantCamera/*.{h,swift}"

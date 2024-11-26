@@ -8,37 +8,19 @@
 
 import AVFoundation
 
-@objcMembers public class BarcodeCaptureSession: AVCaptureSession {
-
-    private let sessionDispatchQueue = DispatchQueue(label: "com.acuant.barcode-session", qos: .userInteractive)
+@objcMembers public class BarcodeCaptureSession: CameraCaptureSession {
     private let captureMetadataOutput = AVCaptureMetadataOutput()
-    private let captureVideoOutput = AVCaptureVideoDataOutput()
     private var captureDeviceInput: AVCaptureDeviceInput!
-    private let captureDevice: AVCaptureDevice!
-    private weak var delegate: BarcodeCaptureDelegate?
+    public weak var delegate: BarcodeCaptureSessionDelegate?
 
-    init(captureDevice: AVCaptureDevice, delegate: BarcodeCaptureDelegate) {
-        self.captureDevice = captureDevice
-        self.delegate = delegate
+    public init(captureDevice: AVCaptureDevice) {
+        let queue = DispatchQueue(label: "com.acuant.barcode-capture-session", qos: .userInteractive)
+        super.init(captureDevice: captureDevice, sessionQueue: queue)
     }
 
-    func start(completion: @escaping () -> ()) {
-        sessionDispatchQueue.async {
-            self.beginConfiguration()
-            self.configureDeviceInput()
-            self.configureMetadataOutput()
-            self.commitConfiguration()
-            self.startRunning()
-            DispatchQueue.main.async {
-                completion()
-            }
-        }
-    }
-
-    func stop() {
-        sessionDispatchQueue.async {
-            self.stopRunning()
-        }
+    override func onConfigurationBegan() {
+        configureDeviceInput()
+        configureMetadataOutput()
     }
 
     private func configureDeviceInput() {
@@ -56,7 +38,7 @@ import AVFoundation
     }
 
     private func configureMetadataOutput() {
-        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: sessionDispatchQueue)
+        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: sessionQueue)
         if canAddOutput(captureMetadataOutput) {
             addOutput(captureMetadataOutput)
             captureMetadataOutput.metadataObjectTypes = [.pdf417]
